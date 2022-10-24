@@ -1,0 +1,10 @@
+La idea es acercarse al centro de la lista doblemente enlazada (dll) desde ambos extremos 
+a través del encabezado y el final a la misma velocidad. Si el número de elementos en dil 
+es impar, el encabezado y el tráiler se encontrarían en el centro, que sería la respuesta, 
+pero si el número de elementos es par, se cruzarán entre sí. Por lo tanto, tenemos que cubrir 
+este caso mientras acercamos el encabezado y el tráiler al verificar si no están limpios entre sí. 
+
+Si están uno al lado del otro, como se menciona en la pregunta, la posición del encabezado sería la respuesta.
+El número de pasos para llegar al centro del dil es la distancia del centro desde cualquier extremo,
+que es |n/2|, donde n es el número de elementos en dll Por lo tanto, el orden de 
+complejidad del algoritmo es O(n/2) que es igual a O(n)

@@ -1,0 +1,14 @@
+La única consecuencia de eliminar la línea 51-52 sería que la cola apuntaría a algún nodo, 
+aunque la lista esté vacía.
+La Class SinglyLinkedList seguiría funcionando igual que antes, ya que todos los métodos, 
+ya sea el acceso o la actualización que involucran 'último', funcionan igual que antes.
+
+last( ): Dado que la función comprueba la lista vacía y devuelve un valor nulo si es así, 
+incluso sin las líneas 51-52, la función sigue devolviendo un valor nulo cuando la lista 
+vinculada está vacía aunque sea nulo todavía apunta a otra cosa.
+
+addFirst( ), addLast( ), removeFirst( ) : No hay problema si alguna de las funciones intenta sobrescribir 
+la última variable. El único problema que puede surgir es si alguna función intenta leer 
+la variable 'última' como en el caso de otra condición en la función addLast(). 
+Pero como podemos ver en el código, eso solo sucede cuando la lista enlazada no está vacía. Entonces, 
+siempre que la lista enlazada esté vacía, la variable 'última' nunca esleída.
