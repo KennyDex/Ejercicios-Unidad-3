@@ -1,0 +1,6 @@
+La diferencia entre una prueba de igualdad superficial y una prueba de igualdad profunda 
+es que el método de igualdad profunda puede comparar matrices anidadas de profundidad arbitraria 
+(es decir, matrices 2D, matrices 3D, etc.), mientras que el método de igualdad superficial no puede.
+La prueba de igualdad superficial no verifica si el elemento es de tipo Array y solo compara si 
+las referencias apuntan al mismo objeto o no. 
+

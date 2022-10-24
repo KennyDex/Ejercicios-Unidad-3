@@ -1,0 +1,25 @@
+Método 1:
+int[]original={2,3,5,7,11,13,17,19};
+int[]backup;
+backup = original;
+La asignación de la copia de seguridad variable al original no crea ninguna matriz nueva. 
+Simplemente crea un nuevo alias para la misma matriz, como se muestra en la figura a continuación.
+
+Método 2:
+backup = datos.clone();
+Se realiza una copia del arreglo original y se asigna una referencia al nuevo arreglo a variable, respaldo.
+El método de clonación, cuando se ejecuta en una matriz, inicializa cada celda de la nueva matriz con el 
+valor almacenado en la celda correspondiente de la matriz original. Esto da como resultado una matriz 
+independiente, como se muestra en la figura siguiente.
+
+Metodo 3:
+public static int[ ][ ] deepClone(int[ ][ ] original){ 
+    // crea una matriz de matrices de nivel superior 
+    int[ ][ ] backup = new int[original.length][ ]; 
+    for (int k=0; k < original.length; k++) // copia la fila k 
+    backup[k] = original[k].clone( ); 
+    return backup; 
+}
+Una matriz 2D es realmente una matriz 1D que almacena otras matrices 1D. Por lo tanto, 
+para copiar una matriz 2D, podemos clonar las filas individuales de la matriz mediante un bucle.
+Lo mismo se puede hacer para una matriz de N dimensiones.
