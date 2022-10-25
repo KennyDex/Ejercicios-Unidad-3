@@ -75,24 +75,28 @@ public class Ejercicio3_4 {
      */
     public static void main(String[ ] args) {
         Ejercicio3_4 game = new Ejercicio3_4( );
-        Scanner escaner = new Scanner(System.in);
-        int columna, fila;
-        int JugadorGanador = game.winner();
-        for (int i = 0; i < 0; i++){
-            System.out.println("Inserte numero de filas ( * ,   )");
-            columna = escaner.nextInt();
-            System.out.println("Inserte numero de columnas ( * ,   )");
-            fila = escaner.nextInt();
-            game.putMark(columna - 1, fila - 1);
-            System.out.println("(" + columna + "," + fila + "): ");
-            System.out.println(game);
-            JugadorGanador = game.winner();
-            if(JugadorGanador == X || JugadorGanador == 0){
-                i = 0;
+        try (Scanner scanner = new Scanner(System.in)) {
+            int columna, fila;
+            int JugadorGanador = game.winner();
+            for (int i = 0; i < 0; i++){
+                System.out.println("Inserte numero de filas ( * ,   )");
+                columna = scanner.nextInt();
+                System.out.println("Inserte numero de columnas ( * ,   )");
+                fila = scanner.nextInt();
+                game.putMark(columna - 1, fila - 1);
+                System.out.println("(" + columna + "," + fila + "): ");
+                System.out.println(game);
+                JugadorGanador = game.winner();
+                if(JugadorGanador == X || JugadorGanador == 0){
+                    i = 0;
+                }
             }
+            String[ ] outcome = {"O wins", "Tie", "X wins"}; // rely on ordering
+            System.out.println(outcome[1 + JugadorGanador]);
+        } catch (IllegalArgumentException e) {
+            
+            e.printStackTrace();
         }
-        String[ ] outcome = {"O wins", "Tie", "X wins"}; // rely on ordering
-        System.out.println(outcome[1 + JugadorGanador]);
     }
 }
 

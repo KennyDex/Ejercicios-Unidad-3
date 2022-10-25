@@ -16,6 +16,7 @@ public class Ejercicio3_9<E>{
     private int size = 0; // number of nodes in the list
     public Ejercicio3_9( ) { } // constructs an initially empty list
     // access methods
+    
     public int size( ) { 
         Node<E> temp = new Node<>(null, head);
         int result = 0;
