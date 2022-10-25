@@ -13,7 +13,7 @@ public class Ejercicio3_2 {
         Random r = new Random();
         while (array.length > 0) {
             int index = r.nextInt(array.length);
-            System.out.println("INDEX = " + index + ", ELEMENT = " + array[index]);
+            System.out.println(array[index]);
             int[] array1 = new int[array.length - 1];
             for (int i = 0; i < index; i++)
             array1[i] = array[i];

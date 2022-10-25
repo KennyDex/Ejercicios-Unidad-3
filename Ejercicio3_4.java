@@ -1,5 +1,8 @@
+import java.util.Scanner;
+
 /*Simulation of a Tic-Tac-Toe game (does not do strategy). */
 public class Ejercicio3_4 {
+
     public static final int X = 1, O = -1; // players
     public static final int EMPTY = 0; // empty cell
     private int board[ ][ ] = new int[3][3]; // game board
@@ -13,23 +16,22 @@ public class Ejercicio3_4 {
         board[i][j] = EMPTY; // every cell should be empty
         player = X; // the first player is 'X'
     }
-    /* Puts an X or O mark at position i,j. */
-    /**
-     * @param i
-     * @param j
-     * @throws IllegalArgumentException
-     */
+    
     public void putMark(int i, int j) throws IllegalArgumentException {
+        Ejercicio3_4 game = new Ejercicio3_4();
+        int JugadorGanador = game.winner();
         if ((i < 0) || (i > 2) || (j < 0) || (j > 2))
-        throw new IllegalArgumentException("Invalid board position");
+            throw new IllegalArgumentException("Invalid board position");
         if (board[i][j] != EMPTY)
-        throw new IllegalArgumentException("Board position occupied");
-        if (isWin(1))
-        throw new IllegalArgumentException("Player 1 has already won");
-        if (isWin(-1))
-        throw new IllegalArgumentException("Player 2 has already won");
-        board[i][j] = player; // place the mark for the current player
-        player = - player; // switch players (uses fact that O = - X)
+            throw new IllegalArgumentException("Board position occupied");
+        if(JugadorGanador == 0){
+            board[i][j] = player; // place the mark for the current player
+            player = - player; // switch players (uses fact that O = - X)
+        }
+        else{
+            throw new IllegalArgumentException("Juego Finalizado, movimiento invalido");
+        }
+        
     }
     /* Checks whether the board configuration is a win for the given player. */
     public boolean isWin(int mark) {
@@ -55,31 +57,42 @@ public class Ejercicio3_4 {
     public String toString( ) {
         StringBuilder sb = new StringBuilder( );
         for (int i=0; i<3; i++) {
-        for (int j=0; j<3; j++) {
-        switch (board[i][j]) {
-        case X: sb.append("X"); break;
-        case O: sb.append("O"); break;
-        case EMPTY: sb.append(" "); break;
-        }
-        if (j < 2) sb.append("|"); // column boundary
-        }
-        if (i < 2) sb.append("\n-----\n"); // row boundary
+            for (int j=0; j<3; j++) {
+                switch (board[i][j]) {
+                    case X: sb.append("X"); break;
+                    case O: sb.append("O"); break;
+                    case EMPTY: sb.append(" "); break;
+                }
+                if (j < 2) sb.append("|"); // column boundary
+            }
+            if (i < 2) sb.append("\n-----\n"); // row boundary
         }
         return sb.toString( );
     }
     /* Test run of a simple game */
+    /**
+     * @param args
+     */
     public static void main(String[ ] args) {
         Ejercicio3_4 game = new Ejercicio3_4( );
-        /*X moves: ∗/ /∗ O moves: */
-        game.putMark(1,1); game.putMark(0,2);
-        game.putMark(2,2); game.putMark(0,0);
-        game.putMark(0,1); game.putMark(2,1);
-        game.putMark(1,2); game.putMark(1,0);
-        game.putMark(2,0);
-        System.out.println(game);
-        int winningPlayer = game.winner( );
+        Scanner escaner = new Scanner(System.in);
+        int columna, fila;
+        int JugadorGanador = game.winner();
+        for (int i = 0; i < 0; i++){
+            System.out.println("Inserte numero de filas ( * ,   )");
+            columna = escaner.nextInt();
+            System.out.println("Inserte numero de columnas ( * ,   )");
+            fila = escaner.nextInt();
+            game.putMark(columna - 1, fila - 1);
+            System.out.println("(" + columna + "," + fila + "): ");
+            System.out.println(game);
+            JugadorGanador = game.winner();
+            if(JugadorGanador == X || JugadorGanador == 0){
+                i = 0;
+            }
+        }
         String[ ] outcome = {"O wins", "Tie", "X wins"}; // rely on ordering
-        System.out.println(outcome[1 + winningPlayer]);
+        System.out.println(outcome[1 + JugadorGanador]);
     }
 }
 

@@ -1,0 +1,16 @@
+De acuerdo con la pregunta, en la lista enlazada individualmente tenemos un método removeFirst 
+que incluye un caso especial para restablecer un campo de cola a null cuando se elimina el 
+último nodo de la lista, es decir:
+Si eliminamos estas dos líneas de código, entonces no hay un impacto tan malo en el código, 
+pero todavía nos enfrentamos a problemas como:
+
+    •	Como hemos eliminado la parte de la cola de la lista enlazada que almacena los resultados 
+    de la referencia de memoria del siguiente elemento. Es una lista vacía hasta que se añade un 
+    nuevo elemento al último nodo.
+    •	Como el último nodo es eliminado, no recuperará su memoria hasta que un nuevo nodo sea 
+    insertado en la misma posición.
+
+Por lo tanto, hay alguna referencia colgante de la cola, es decir, como no hay tal último 
+nodo que tiene una dirección de memoria. por lo tanto, la parte de la cola de la lista no 
+almacenará ningún tipo de referencia de memoria específica. la referencia colgante también 
+se denomina como referencia de basura por eso la clase no funcionará con dicha modificación.

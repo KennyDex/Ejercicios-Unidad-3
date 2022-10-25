@@ -1,0 +1,18 @@
+Comparar (==) la identidad de los objetos, es decir, se comprueba si los operandos son iguales de hecho (ocupando la misma área de memoria), mientras que equals compara la equivalencia de los objetos, es decir, el valor "lógico" de dos objetos, posiblemente no idénticos, es el mismo. Si para dos objetos
+                                        a == b
+Entonces es cierto que:     a.equals(b) // si a!= null
+Pero lo contrario no es cierto en todos los casos
+
+La distinción superficial/profunda sólo tiene sentido para la comparación de iguales.
+
+Superficial significa que comparas sólo los contenidos inmediatos de dos objetos para encontrar si son "iguales" en tu sentido, mientras que profundo significa que comparas los contenidos de tus objetos recursivamente hasta que todo lo que necesitas comparar son campos primitivos.
+
+Si defines el método equals de tus objetos como una secuencia de llamadas a equals en los campos de instancia de estos objetos, utilizas la comparación profunda.
+
+Si defines equals usando el operador == para comparar tipos compuestos, como Strings, entonces usas una comparación superficial -- y eso es incorrecto en Java.
+
+Además, nunca debes usar == para comparar dos objetos compuestos, a menos que los consideres iguales sólo si son iguales.
+
+Una matriz bidimensional en Java es en realidad una matriz unidimensional de tal manera que cada entrada es a su vez una referencia a una matriz unidimensional.
+
+
