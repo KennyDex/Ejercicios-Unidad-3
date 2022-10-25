@@ -11,4 +11,4 @@ addFirst( ), addLast( ), removeFirst( ) : No hay problema si alguna de las funci
 la última variable. El único problema que puede surgir es si alguna función intenta leer 
 la variable 'última' como en el caso de otra condición en la función addLast(). 
 Pero como podemos ver en el código, eso solo sucede cuando la lista enlazada no está vacía. Entonces, 
-siempre que la lista enlazada esté vacía, la variable 'última' nunca esleída.
+siempre que la lista enlazada esté vacía, la variable 'última' nunca esleída
